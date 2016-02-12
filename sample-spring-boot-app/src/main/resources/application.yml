@@ -1,0 +1,6 @@
+debug: true
+
+spring:
+    profiles: default
+    main.show-banner: true
+
