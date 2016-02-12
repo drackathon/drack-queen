@@ -7,12 +7,101 @@
   <version>1.0-SNAPSHOT</version>
   <name>sample-app</name>
   <url>http://maven.apache.org</url>
+
+
+  <properties>
+    <spring.boot.version>1.2.7.RELEASE</spring.boot.version>
+    <problem.version>0.4.0</problem.version>
+    <jackson.version>2.6.1</jackson.version>
+    <guava.version>18.0</guava.version>
+
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+
   <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <version>${spring.boot.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <!-- Logging -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-log4j2</artifactId>
+      <version>${spring.boot.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.12</version>
+    </dependency>
+
+    <!-- Logging -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-log4j2</artifactId>
+      <version>${spring.boot.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.12</version>
+    </dependency>
+
+
+    <!-- application/problem+json libraries  -->
+    <!-- https://github.com/zalando/problem -->
+    <dependency>
+      <groupId>org.zalando</groupId>
+      <artifactId>problem</artifactId>
+      <version>${problem.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.zalando</groupId>
+      <artifactId>jackson-datatype-problem</artifactId>
+      <version>${problem.version}</version>
+    </dependency>
+
+
+    <!-- Jackson dependencies to run application/problem+json libraries -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-jdk8</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+
+    <!-- Misc -->
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>${guava.version}</version>
+    </dependency>
+
+    <!-- Testing -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <version>4.11</version>
       <scope>test</scope>
     </dependency>
+    
   </dependencies>
 </project>
