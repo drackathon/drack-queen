@@ -39,15 +39,17 @@ public class PetsService {
     private static final Logger LOGGER = LoggerFactory.getLogger(PetsService.class);
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(value = {"/{pet}"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/{pet}"}, method = RequestMethod.PUT)
     public Links createPet(@PathVariable String pet,
                           final HttpServletRequest servletRequest,
                           final HttpServletResponse servletResponse) {
+        LOGGER.warn("xXXXXXXXXXXXXX");
         throw new NotSupportedException(URI.create("/pets/error/not-supported"), "not supported");
     }
 
 
     @ExceptionHandler(NotSupportedException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public String handleError(NotSupportedException exception) throws JsonProcessingException {
         return objectMapper.writeValueAsString(exception);
     }
