@@ -43,7 +43,6 @@ public class PetsService {
     public Links createPet(@PathVariable String pet,
                           final HttpServletRequest servletRequest,
                           final HttpServletResponse servletResponse) {
-        LOGGER.warn("xXXXXXXXXXXXXX");
         throw new NotSupportedException(URI.create("/pets/error/not-supported"), "not supported");
     }
 
