@@ -68,13 +68,19 @@
             <version>${jackson.version}</version>
         </dependency>
 
-        <!-- DB access
+        <!-- DB access -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
             <version>${spring.boot.version}</version>
         </dependency>
-        -->
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.4.1208.jre7</version>
+        </dependency>
+
 
         <!-- Misc -->
         <dependency>

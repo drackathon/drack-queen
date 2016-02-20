@@ -3,4 +3,9 @@ debug: true
 spring:
     profiles: default
     main.show-banner: true
-
+    datasource:
+        url: jdbc:postgresql://${DATABASE_IP}:5432/test_db
+        username: postgres
+        password: postgres
+        driver-class-name: org.postgresql.Driver
+        initialize: true
