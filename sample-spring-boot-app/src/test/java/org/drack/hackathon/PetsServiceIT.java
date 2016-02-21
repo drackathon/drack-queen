@@ -22,8 +22,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration                                       // set up application context
 @SpringApplicationConfiguration(classes = App.class)       // set up how to load or configure application context
-@ActiveProfiles("development")
-public class PetsServiceTest {
+@ActiveProfiles("test")
+public class PetsServiceIT {
     private MockMvc mockMvc;
 
     @Autowired

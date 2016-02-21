@@ -22,3 +22,16 @@ spring:
         password: postgres
         driver-class-name: org.postgresql.Driver
         initialize: true
+
+---
+
+spring:
+    profiles: test
+    main.show-banner: true
+    datasource:
+        db: test_db
+        db-port: 5432
+        docker-image: postgres:9.5
+        username: postgres
+        password: postgres
+        driver-class-name: org.postgresql.Driver
