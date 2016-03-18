@@ -12,7 +12,7 @@ $ export DATABASE_IP=$(docker-machine ip <machine name>)
 https://github.com/spotify/docker-maven-plugin
 ```
 mvn clean package docker:build
-``
+```
 
 ## Start App
 ```
