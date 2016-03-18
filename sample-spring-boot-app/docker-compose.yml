@@ -1,0 +1,18 @@
+database:
+  image: postgres:9.5
+  container_name: db
+  ports:
+   - "5432:5432"
+  environment:
+   - POSTGRES_USER=postgres
+   - POSTGRES_PASSWORD=postgres
+   - POSTGRES_DB=test_db
+  volumes:
+   - ./src/test/resources/db:/docker-entrypoint-initdb.d
+app:
+  image: sample-spring-boot-app
+  container_name: app
+  ports:
+   - "8080:8080"
+  links:
+   - database:db

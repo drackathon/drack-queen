@@ -1,6 +1,41 @@
 debug: true
 
-spring:
-    profiles: default
-    main.show-banner: true
 
+spring:
+    profiles: development
+    main.show-banner: true
+    datasource:
+        url: jdbc:postgresql://${DATABASE_IP}:5432/test_db
+        username: postgres
+        password: postgres
+        driver-class-name: org.postgresql.Driver
+        initialize: true
+
+---
+
+spring:
+    profiles: production
+    main.show-banner: true
+    datasource:
+        url: jdbc:postgresql://db:5432/test_db
+        username: postgres
+        password: postgres
+        driver-class-name: org.postgresql.Driver
+        initialize: true
+
+---
+
+spring:
+    profiles: test
+    main.show-banner: true
+    datasource:
+        db: test_db
+        db-port: 5432
+        docker-image: postgres:9.5
+        username: postgres
+        password: postgres
+        driver-class-name: org.postgresql.Driver
+
+
+docker:
+  machine-service-url: https://192.168.99.100:2376
