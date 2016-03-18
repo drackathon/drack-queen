@@ -35,13 +35,14 @@ import java.util.Map;
 class DockerPostgresTestConfig {
 
 
-    private static final String DOCKER_MACHINE_SERVICE_URL = "https://192.168.99.100:2376";
 
     private static final long DOCKER_CONTAINER_STARTUP_TIMEOUT = 60000L;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DockerPostgresTestConfig.class);
 
 
+    @Value("${docker.machine-service-url}")
+    private String dockerMachineServiceUrl;
 
     @Value("${spring.datasource.username}")
     private String user;
@@ -136,7 +137,7 @@ class DockerPostgresTestConfig {
             }
         }
 
-        LOGGER.info("Could not create docker client from the environment. Assuming docker-machine environment with url " + DOCKER_MACHINE_SERVICE_URL);
+        LOGGER.info("Could not create docker client from the environment. Assuming docker-machine environment with url " + dockerMachineServiceUrl);
         DockerCertificates dockerCertificates = null;
         try {
             String userHome = System.getProperty("user.home");
@@ -145,7 +146,7 @@ class DockerPostgresTestConfig {
             System.err.println(e.getMessage());
         }
         return DefaultDockerClient.builder()
-                .uri(URI.create(DOCKER_MACHINE_SERVICE_URL))
+                .uri(URI.create(dockerMachineServiceUrl))
                 .dockerCertificates(dockerCertificates)
                 .build();
     }
